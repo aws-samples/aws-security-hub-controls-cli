@@ -1,6 +1,6 @@
 # Security Hub Controls CLI
 
-A CLI tool to disable and enable security standards controls in AWS Security Hub.
+A CLI tool to disable and enable security standards controls in AWS Security Hub. It is designed to work together with [AWS Security Hub Cross-Account Controls Disabler](https://github.com/aws-samples/aws-security-hub-cross-account-controls-disabler).
 
 ## Purpose
 
