@@ -1,0 +1,3 @@
+boto3
+pyyaml
+natsort==3.3.0

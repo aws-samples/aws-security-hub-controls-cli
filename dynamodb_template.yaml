@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AccountExceptions DynamoDB Tabble
+
+Parameters:
+  TableName:
+    Type: String
+    Default: "AccountExceptions"
+    Description: Name of DynamoDB table
+
+Resources:
+
+  AccountExceptions:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref TableName
+      AttributeDefinitions:
+        -
+          AttributeName: "ControlId"
+          AttributeType: "S"
+      BillingMode: "PAY_PER_REQUEST"
+      KeySchema:
+        -
+          AttributeName: "ControlId"
+          KeyType: "HASH"
+
+
+Outputs:
+  AccountExceptionsDynamoDBTableName:
+    Value: !Ref AccountExceptions
