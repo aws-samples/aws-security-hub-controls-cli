@@ -285,9 +285,16 @@ def get_controls_online(client):
         if standard_name not in controls_online:
             # initialize new standard
             controls_online[standard_name] = dict()
-        controls_online[standard_name] = client.describe_standards_controls(
+        response = client.describe_standards_controls(
             StandardsSubscriptionArn=standard["StandardsSubscriptionArn"]
         )
+        controls_online[standard_name] = response
+        while "NextToken" in response:
+            response = client.describe_standards_controls(
+                StandardsSubscriptionArn=standard["StandardsSubscriptionArn"],
+                NextToken=response["NextToken"]
+            )
+            controls_online[standard_name]['Controls'].extend(response['Controls'])
 
     logger.debug("controls_online = %s", str(controls_online))
     logger.debug("Leave get_controls_online")
